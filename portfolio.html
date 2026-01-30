@@ -46,6 +46,24 @@ body {
   animation: slideUp 1.5s ease forwards;
 }
 
+.social-links {
+  margin-top: 20px;
+}
+
+.social-links a {
+  margin: 0 12px;
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  color: #f8fafc;
+  transform: translateY(-2px);
+}
+
 /* SECTIONS */
 .section {
   padding: 90px 10%;
@@ -149,6 +167,16 @@ footer {
   color: #94a3b8;
 }
 
+footer a {
+  color: #38bdf8;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 /* ANIMATIONS */
 @keyframes fadeIn {
   from { opacity: 0 }
@@ -168,6 +196,11 @@ footer {
 <section class="hero">
   <h1>Hi, I’m <span>Sweety Rai</span></h1>
   <p>Full Stack Developer | Blockchain | Gaming</p>
+
+  <div class="social-links">
+    <a href="https://github.com/SweetyRai" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/sweety-rai-083a3b180/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
 </section>
 
 <!-- ABOUT -->
@@ -187,7 +220,7 @@ footer {
   <h2>Experience</h2>
 
   <div class="card">
-    <h3>ZNOTEC GmbH – Berlin (Freelancer)</h3>
+    <h3>ZNOTEC GmbH – Berlin</h3>
     <span>01/2025 – Present | Full Stack Web Developer</span>
     <p>Developed and maintained ZNOTEC GmbH's official website using the MERN stack.</p>
   </div>
@@ -207,60 +240,21 @@ footer {
   <div class="card">
     <h3>AIGEN TECH – Mumbai</h3>
     <span>10/2019 – 12/2020 | Full Stack Developer</span>
-    <p>Built microservices and developed SHERO platform with cart and filters.</p>
+    <p>Built microservices and developed SHERO platform.</p>
   </div>
-
-  <div class="card">
-    <h3>WINCHESTER TECHNOLOGIES – Mumbai</h3>
-    <span>08/2018 – 02/2019 | Web Developer</span>
-    <p>Developed CoinBNS desktop frontend using Vue.js.</p>
-  </div>
-
-  <div class="card">
-    <h3>NIMAP INFOTECH – Mumbai</h3>
-    <span>01/2017 – 07/2018 | Web Developer</span>
-    <p>Built Chatongo and Field Force Connect frontends.</p>
-  </div>
-</section>
-
-<!-- TEACHING -->
-<section class="section reveal">
-  <h2>Teaching & Mentoring</h2>
-  <p>
-    I actively teach web development concepts and design HTML-based games
-    to help learners understand programming fundamentals through interactive,
-    real-world examples.
-  </p>
 </section>
 
 <!-- EDUCATION -->
 <section class="section reveal">
   <h2>Education</h2>
+  <p>MSc (IT) – Mumbai University (2019)</p>
+  <p>BSc (IT) – Mumbai University (2017)</p>
   <p>
-    Blockchain Certification – Berlin BSBI  
-    <a 
-      href="https://certificate.berlinsbi.com/verify/6b6a8ddb669" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      style="color:#38bdf8; text-decoration: underline; margin-left:6px;"
-    >
+    Blockchain Certification – Berlin BSBI
+    <a href="https://certificate.berlinsbi.com/verify/6b6a8ddb669" target="_blank">
       (View Certificate)
     </a>
   </p>
-  <p>MSc (IT) – Mumbai University (2019)</p>
-  <p>BSc (IT) – Mumbai University (2017)</p>
-</section>
-
-
-
-<!-- SKILLS -->
-<section class="section reveal">
-  <h2>Tech Stack</h2>
-  <div class="skills">
-    <span>React</span><span>Node.js</span><span>MongoDB</span><span>CSS3</span><span>HTML5</span><span>Bootstarp</span>
-    <span>Blockchain</span><span>Web3</span><span>HTML5 Games</span><span>Wordpress</span><span>Vuejs</span><span>Digital Ocean</span>
-    <span>AWS</span><span>Socket.IO</span><span>Git</span><span>MySQL</span><span>Firebase</span>
-  </div>
 </section>
 
 <!-- GAME -->
@@ -276,11 +270,12 @@ footer {
 </section>
 
 <footer>
-  © 2026 Sweety Rai | Interactive Portfolio
+  © 2026 Sweety Rai |
+  <a href="https://github.com/SweetyRai" target="_blank">GitHub</a> |
+  <a href="https://www.linkedin.com/in/sweety-rai-083a3b180/" target="_blank">LinkedIn</a>
 </footer>
 
 <script>
-/* SCROLL REVEAL */
 const reveals = document.querySelectorAll(".reveal");
 window.addEventListener("scroll", () => {
   reveals.forEach(el => {
@@ -290,7 +285,7 @@ window.addEventListener("scroll", () => {
   });
 });
 
-/* GAME */
+/* GAME LOGIC */
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
