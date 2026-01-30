@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== SMOOTH POINTER EFFECT (CodePen-style) ===== */
+/* ===== POINTER EFFECT ===== */
 #cursor {
   position: fixed;
   top: 0;
@@ -32,11 +32,10 @@ body {
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
-  transition: transform 0.15s ease-out;
   box-shadow: 0 0 25px rgba(56,189,248,0.6);
 }
 
-/* Content always above cursor */
+/* Keep content above pointer */
 .hero, .section, footer {
   position: relative;
   z-index: 2;
@@ -80,7 +79,8 @@ body {
   transition: 0.3s;
 }
 
-.social-links a:hover {
+.social-links a:hover,
+.social-links a:focus {
   color: #f8fafc;
   transform: translateY(-2px);
 }
@@ -120,6 +120,15 @@ body {
 .card:hover {
   transform: translateY(-5px);
   background: #020617dd;
+}
+
+.card h3 {
+  color: #f8fafc;
+}
+
+.card span {
+  font-size: 0.9rem;
+  color: #94a3b8;
 }
 
 /* SKILLS */
@@ -185,6 +194,10 @@ footer a {
   margin: 0 8px;
 }
 
+footer a:hover {
+  text-decoration: underline;
+}
+
 /* ANIMATIONS */
 @keyframes fadeIn {
   from { opacity: 0 }
@@ -200,7 +213,7 @@ footer a {
 
 <body>
 
-<!-- CUSTOM POINTER -->
+<!-- POINTER -->
 <div id="cursor"></div>
 
 <!-- HERO -->
@@ -209,8 +222,8 @@ footer a {
   <p>Full Stack Developer | Blockchain | Gaming</p>
 
   <div class="social-links">
-    <a href="https://github.com/SweetyRai" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/sweety-rai-083a3b180/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/SweetyRai" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/sweety-rai-083a3b180/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   </div>
 </section>
 
@@ -219,16 +232,106 @@ footer a {
   <h2>About Me</h2>
   <p>
     Full Stack Developer with 6+ years of experience and strong exposure to
-    blockchain, gaming, and real-time systems.
-    <strong>I also teach web development and build HTML games.</strong>
+    blockchain, gaming, and real-time systems. Specialized in MERN stack,
+    Web3 integrations, backend-heavy architectures, and HTML game development.
+    <strong>I also teach web development and build HTML games, helping learners
+    understand core concepts through hands-on, interactive projects.</strong>
   </p>
+</section>
+
+<!-- SKILLS -->
+<section class="section reveal">
+  <h2>Tech Stack</h2>
+  <div class="skills">
+    <span>React</span><span>Vuejs</span><span>Wordpress</span><span>HTML5</span>
+    <span>CSS3</span><span>Bootstrap</span><span>AWS</span><span>DigitalOcean</span>
+    <span>Node.js</span><span>MongoDB</span><span>Express</span><span>Blockchain</span>
+    <span>Web3</span><span>Solidity</span><span>HTML Games</span><span>Socket.IO</span>
+  </div>
+</section>
+
+
+<!-- EXPERIENCE -->
+<section class="section reveal">
+  <h2>Experience</h2>
+
+  <div class="card">
+    <h3>ZNOTEC GmbH – Berlin</h3>
+    <span>01/2025 – Present | Full Stack Web Developer</span>
+    <p>
+      Developed and maintained ZNOTEC GmbH's official website using the MERN stack
+      for dynamic functionality and scalability.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>COINCADE STUDIOS – Mumbai</h3>
+    <span>10/2021 – 03/2024 | Full Stack Developer</span>
+    <p>
+      Worked on blockchain-based projects including Coincide, 3TDao, Bosscultr,
+      and Shaurrya Teleservices using Node.js, MongoDB, React.js, Web3, AWS, and
+      Thirdweb. Also contributed to WordPress-based platforms.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>PAPER BOAT APPS Pvt. Ltd – Mumbai</h3>
+    <span>05/2021 – 08/2021 | Full Stack Developer</span>
+    <p>
+      Worked on the Kiddopia product backend using Node.js, Express.js,
+      Handlebars, and Firebase. Built the Kiddopia Admin Panel using Node.js,
+      Express.js, HTML, CSS, and MySQL.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>AIGEN TECH – Mumbai</h3>
+    <span>10/2019 – 12/2020 | Full Stack Developer</span>
+    <p>
+      Developed microservices using Node.js, Express.js, and MongoDB for the
+      Frats platform. Also built the SHERO website with cart functionality,
+      social media integration, and advanced filtering.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>WINCHESTER TECHNOLOGIES – Mumbai</h3>
+    <span>08/2018 – 02/2019 | Web Developer</span>
+    <p>
+      Developed the desktop version of CoinBNS using HTML, CSS/SCSS, JavaScript,
+      and Vue.js v2.0, focusing on performance and responsive UI design.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>NIMAP INFOTECH – Mumbai</h3>
+    <span>01/2017 – 07/2018 | Web Developer</span>
+    <p>
+      Built desktop front-end applications for Chatongo and Field Force Connect
+      (FFC) using HTML, CSS, jQuery, Bootstrap, and AngularJS v1.6.
+    </p>
+  </div>
+</section>
+
+
+<!-- EDUCATION -->
+<section class="section reveal">
+  <h2>Education</h2>
+  <p>
+    Blockchain Certification – Berlin BSBI
+    <a href="https://certificate.berlinsbi.com/verify/6b6a8ddb669" target="_blank">
+      (View Certificate)
+    </a>
+  </p>
+  <p>MSc (IT) – Mumbai University (2019)</p>
+  <p>BSc (IT) – Mumbai University (2017)</p>
 </section>
 
 <!-- GAME -->
 <section class="section reveal">
   <h2>Mini HTML Car Racing Game</h2>
   <div class="game-box">
-    <p>Use ← → Arrow Keys to move the car.</p>
+    <p>Use ← → Arrow Keys to move the car. Avoid obstacles!</p>
     <canvas id="gameCanvas" width="320" height="480"></canvas>
     <p>Score: <span id="score">0</span></p>
     <button onclick="startGame()">Start</button>
@@ -253,25 +356,25 @@ window.addEventListener("scroll", () => {
   });
 });
 
-/* ===== SMOOTH POINTER LOGIC (CodePen-inspired) ===== */
+/* POINTER EFFECT */
 const cursor = document.getElementById("cursor");
-let mouseX = 0, mouseY = 0;
-let cursorX = 0, cursorY = 0;
+let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
 
-document.addEventListener("mousemove", e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
+if (!("ontouchstart" in window)) {
+  document.addEventListener("mousemove", e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
 
-function animateCursor() {
-  cursorX += (mouseX - cursorX) * 0.15;
-  cursorY += (mouseY - cursorY) * 0.15;
-  cursor.style.left = cursorX + "px";
-  cursor.style.top = cursorY + "px";
-  requestAnimationFrame(animateCursor);
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    cursor.style.left = cursorX + "px";
+    cursor.style.top = cursorY + "px";
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
 }
-
-animateCursor();
 
 /* GAME LOGIC (UNCHANGED) */
 const canvas = document.getElementById("gameCanvas");
