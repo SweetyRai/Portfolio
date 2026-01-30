@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sweety Rai | Full Stack Developer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #020617, #0f172a);
+  color: #e5e7eb;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.hero span {
+  color: #38bdf8;
+}
+
+.hero p {
+  margin-top: 12px;
+  font-size: 1.3rem;
+  opacity: 0.9;
+  animation: slideUp 1.5s ease forwards;
+}
+
+/* SECTIONS */
+.section {
+  padding: 90px 10%;
+}
+
+.section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  color: #38bdf8;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.9s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CARDS */
+.card {
+  background: #020617;
+  border-left: 4px solid #38bdf8;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #020617dd;
+}
+
+.card h3 {
+  color: #f8fafc;
+}
+
+.card span {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* SKILLS */
+.skills span {
+  display: inline-block;
+  background: #1e293b;
+  margin: 6px;
+  padding: 10px 18px;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.skills span:hover {
+  background: #38bdf8;
+  color: #020617;
+  transform: scale(1.05);
+}
+
+/* GAME */
+.game-box {
+  background: #020617;
+  padding: 25px;
+  border-radius: 14px;
+  margin-top: 30px;
+}
+
+canvas {
+  background: #0f172a;
+  display: block;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(56,189,248,0.3);
+}
+
+button {
+  background: #38bdf8;
+  color: #020617;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 5px;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  background: #020617;
+  margin-top: 80px;
+  color: #94a3b8;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0 }
+  to { transform: translateY(0); opacity: 1 }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Hi, I’m <span>Sweety Rai</span></h1>
+  <p>Full Stack Developer | Blockchain | Gaming</p>
+</section>
+
+<!-- ABOUT -->
+<section class="section reveal">
+  <h2>About Me</h2>
+  <p>
+    Full Stack Developer with 6+ years of experience and strong exposure to
+    blockchain, gaming, and real-time systems. Specialized in MERN stack,
+    Web3 integrations, backend-heavy architectures, and HTML game development.
+    <strong>I also teach web development and build HTML games, helping learners
+    understand core concepts through hands-on, interactive projects.</strong>
+  </p>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section reveal">
+  <h2>Experience</h2>
+
+  <div class="card">
+    <h3>ZNOTEC GmbH – Berlin (Freelancer)</h3>
+    <span>01/2025 – Present | Full Stack Web Developer</span>
+    <p>Developed and maintained ZNOTEC GmbH's official website using the MERN stack.</p>
+  </div>
+
+  <div class="card">
+    <h3>COINCADE STUDIOS – Mumbai</h3>
+    <span>10/2021 – 03/2024 | Full Stack Developer</span>
+    <p>Worked on blockchain projects including Coincide, 3TDao, Bosscultr, and Shaurrya Teleservices.</p>
+  </div>
+
+  <div class="card">
+    <h3>PAPER BOAT APPS – Mumbai</h3>
+    <span>05/2021 – 08/2021 | Full Stack Developer</span>
+    <p>Worked on Kiddopia backend and Admin Panel using Node.js, Firebase, and MySQL.</p>
+  </div>
+
+  <div class="card">
+    <h3>AIGEN TECH – Mumbai</h3>
+    <span>10/2019 – 12/2020 | Full Stack Developer</span>
+    <p>Built microservices and developed SHERO platform with cart and filters.</p>
+  </div>
+
+  <div class="card">
+    <h3>WINCHESTER TECHNOLOGIES – Mumbai</h3>
+    <span>08/2018 – 02/2019 | Web Developer</span>
+    <p>Developed CoinBNS desktop frontend using Vue.js.</p>
+  </div>
+
+  <div class="card">
+    <h3>NIMAP INFOTECH – Mumbai</h3>
+    <span>01/2017 – 07/2018 | Web Developer</span>
+    <p>Built Chatongo and Field Force Connect frontends.</p>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section class="section reveal">
+  <h2>Teaching & Mentoring</h2>
+  <p>
+    I actively teach web development concepts and design HTML-based games
+    to help learners understand programming fundamentals through interactive,
+    real-world examples.
+  </p>
+</section>
+
+<!-- EDUCATION -->
+<section class="section reveal">
+  <h2>Education</h2>
+  <p>
+    Blockchain Certification – Berlin BSBI  
+    <a 
+      href="https://certificate.berlinsbi.com/verify/6b6a8ddb669" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      style="color:#38bdf8; text-decoration: underline; margin-left:6px;"
+    >
+      (View Certificate)
+    </a>
+  </p>
+  <p>MSc (IT) – Mumbai University (2019)</p>
+  <p>BSc (IT) – Mumbai University (2017)</p>
+</section>
+
+
+
+<!-- SKILLS -->
+<section class="section reveal">
+  <h2>Tech Stack</h2>
+  <div class="skills">
+    <span>React</span><span>Node.js</span><span>MongoDB</span><span>CSS3</span><span>HTML5</span><span>Bootstarp</span>
+    <span>Blockchain</span><span>Web3</span><span>HTML5 Games</span><span>Wordpress</span><span>Vuejs</span><span>Digital Ocean</span>
+    <span>AWS</span><span>Socket.IO</span><span>Git</span><span>MySQL</span><span>Firebase</span>
+  </div>
+</section>
+
+<!-- GAME -->
+<section class="section reveal">
+  <h2>Mini HTML Car Racing Game</h2>
+  <div class="game-box">
+    <p>Use ← → Arrow Keys to move the car. Avoid obstacles!</p>
+    <canvas id="gameCanvas" width="320" height="480"></canvas>
+    <p>Score: <span id="score">0</span></p>
+    <button onclick="startGame()">Start</button>
+    <button onclick="stopGame()">Stop</button>
+  </div>
+</section>
+
+<footer>
+  © 2026 Sweety Rai | Interactive Portfolio
+</footer>
+
+<script>
+/* SCROLL REVEAL */
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+});
+
+/* GAME */
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+let car, obstacles, score, speed;
+let gameRunning = false;
+let animationId, obstacleInterval;
+
+function resetGame() {
+  car = { x: 140, y: 380, w: 40, h: 70 };
+  obstacles = [];
+  score = 0;
+  speed = 3;
+  document.getElementById("score").innerText = score;
+}
+
+document.addEventListener("keydown", e => {
+  if (!gameRunning) return;
+  if (e.key === "ArrowLeft" && car.x > 0) car.x -= 25;
+  if (e.key === "ArrowRight" && car.x < canvas.width - car.w) car.x += 25;
+});
+
+function spawnObstacle() {
+  obstacles.push({ x: Math.random() * 280, y: -60, w: 40, h: 60 });
+}
+
+function gameLoop() {
+  if (!gameRunning) return;
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#1e293b";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle = "#38bdf8";
+  ctx.fillRect(car.x, car.y, car.w, car.h);
+
+  ctx.fillStyle = "#ef4444";
+  obstacles.forEach((o,i)=>{
+    o.y += speed;
+    ctx.fillRect(o.x,o.y,o.w,o.h);
+
+    if (
+      car.x < o.x + o.w &&
+      car.x + car.w > o.x &&
+      car.y < o.y + o.h &&
+      car.y + car.h > o.y
+    ) {
+      stopGame();
+      alert("Game Over! Score: " + score);
+    }
+
+    if (o.y > canvas.height) {
+      obstacles.splice(i,1);
+      score++;
+      document.getElementById("score").innerText = score;
+    }
+  });
+
+  animationId = requestAnimationFrame(gameLoop);
+}
+
+function startGame() {
+  if (gameRunning) return;
+  resetGame();
+  gameRunning = true;
+  obstacleInterval = setInterval(spawnObstacle, 1200);
+  gameLoop();
+}
+
+function stopGame() {
+  gameRunning = false;
+  cancelAnimationFrame(animationId);
+  clearInterval(obstacleInterval);
+}
+</script>
+
+</body>
+</html>
