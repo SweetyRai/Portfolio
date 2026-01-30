@@ -208,6 +208,47 @@ footer a:hover {
   from { transform: translateY(50px); opacity: 0 }
   to { transform: translateY(0); opacity: 1 }
 }
+
+/* GAME RESPONSIVE */
+.canvas-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+canvas {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+}
+
+/* Game buttons */
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Mobile Controls */
+.mobile-controls {
+  display: none;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.mobile-controls button {
+  width: 45%;
+  font-size: 1.5rem;
+  padding: 14px;
+}
+
+/* Show mobile controls on small screens */
+@media (max-width: 768px) {
+  .mobile-controls {
+    display: flex;
+  }
+}
+
 </style>
 </head>
 
@@ -324,7 +365,7 @@ footer a:hover {
     <span>Mumbai University | 2019</span>
     <p>
       Master’s degree focused on advanced software development, databases,
-      system architecture, and applied computing concepts.
+      system architecture, Machine Learning and applied computing concepts.
     </p>
   </div>
 
@@ -386,7 +427,7 @@ footer a:hover {
 
 
 <!-- GAME -->
-<section class="section reveal">
+<!-- <section class="section reveal">
   <h2>Mini HTML Car Racing Game</h2>
   <div class="game-box">
     <p>Use ← → Arrow Keys to move the car. Avoid obstacles!</p>
@@ -395,7 +436,36 @@ footer a:hover {
     <button onclick="startGame()">Start</button>
     <button onclick="stopGame()">Stop</button>
   </div>
+</section> -->
+
+<section class="section reveal">
+  <h2>Mini HTML Car Racing Game</h2>
+
+  <div class="game-box">
+    <p class="game-instructions">
+      Desktop: Use ← → Arrow Keys <br />
+      Mobile: Tap Left / Right buttons
+    </p>
+
+    <div class="canvas-wrapper">
+      <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <p>Score: <span id="score">0</span></p>
+
+    <div class="game-controls">
+      <button onclick="startGame()">Start</button>
+      <button onclick="stopGame()">Stop</button>
+    </div>
+
+    <!-- Mobile Controls -->
+    <div class="mobile-controls">
+      <button ontouchstart="moveLeft()">◀</button>
+      <button ontouchstart="moveRight()">▶</button>
+    </div>
+  </div>
 </section>
+
 
 <footer>
   © 2026 Sweety Rai |
@@ -434,47 +504,79 @@ if (!("ontouchstart" in window)) {
   animateCursor();
 }
 
-/* GAME LOGIC (UNCHANGED) */
+/* GAME LOGIC (RESPONSIVE + MOBILE SUPPORT) */
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+
+/* Resize canvas dynamically */
+function resizeCanvas() {
+  const maxWidth = 360;
+  canvas.width = Math.min(window.innerWidth * 0.9, maxWidth);
+  canvas.height = canvas.width * 1.5;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 let car, obstacles, score, speed;
 let gameRunning = false;
 let animationId, obstacleInterval;
 
 function resetGame() {
-  car = { x: 140, y: 380, w: 40, h: 70 };
+  car = {
+    x: canvas.width / 2 - 20,
+    y: canvas.height - 90,
+    w: 40,
+    h: 70
+  };
   obstacles = [];
   score = 0;
   speed = 3;
   document.getElementById("score").innerText = score;
 }
 
+/* Keyboard Controls */
 document.addEventListener("keydown", e => {
   if (!gameRunning) return;
-  if (e.key === "ArrowLeft" && car.x > 0) car.x -= 25;
-  if (e.key === "ArrowRight" && car.x < canvas.width - car.w) car.x += 25;
+  if (e.key === "ArrowLeft") moveLeft();
+  if (e.key === "ArrowRight") moveRight();
 });
 
+/* Touch + Button Controls */
+function moveLeft() {
+  if (car.x > 0) car.x -= 25;
+}
+
+function moveRight() {
+  if (car.x < canvas.width - car.w) car.x += 25;
+}
+
 function spawnObstacle() {
-  obstacles.push({ x: Math.random() * 280, y: -60, w: 40, h: 60 });
+  obstacles.push({
+    x: Math.random() * (canvas.width - 40),
+    y: -60,
+    w: 40,
+    h: 60
+  });
 }
 
 function gameLoop() {
   if (!gameRunning) return;
 
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   ctx.fillStyle = "#1e293b";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.fillStyle = "#38bdf8";
   ctx.fillRect(car.x, car.y, car.w, car.h);
 
   ctx.fillStyle = "#ef4444";
-  obstacles.forEach((o,i)=>{
+  obstacles.forEach((o, i) => {
     o.y += speed;
-    ctx.fillRect(o.x,o.y,o.w,o.h);
+    ctx.fillRect(o.x, o.y, o.w, o.h);
 
+    // Collision
     if (
       car.x < o.x + o.w &&
       car.x + car.w > o.x &&
@@ -486,7 +588,7 @@ function gameLoop() {
     }
 
     if (o.y > canvas.height) {
-      obstacles.splice(i,1);
+      obstacles.splice(i, 1);
       score++;
       document.getElementById("score").innerText = score;
     }
@@ -508,6 +610,7 @@ function stopGame() {
   cancelAnimationFrame(animationId);
   clearInterval(obstacleInterval);
 }
+
 </script>
 
 </body>
