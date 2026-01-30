@@ -20,6 +20,28 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== SMOOTH POINTER EFFECT (CodePen-style) ===== */
+#cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background: rgba(56, 189, 248, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out;
+  box-shadow: 0 0 25px rgba(56,189,248,0.6);
+}
+
+/* Content always above cursor */
+.hero, .section, footer {
+  position: relative;
+  z-index: 2;
+}
+
 /* HERO */
 .hero {
   height: 100vh;
@@ -58,8 +80,7 @@ body {
   transition: 0.3s;
 }
 
-.social-links a:hover,
-.social-links a:focus {
+.social-links a:hover {
   color: #f8fafc;
   transform: translateY(-2px);
 }
@@ -99,15 +120,6 @@ body {
 .card:hover {
   transform: translateY(-5px);
   background: #020617dd;
-}
-
-.card h3 {
-  color: #f8fafc;
-}
-
-.card span {
-  font-size: 0.9rem;
-  color: #94a3b8;
 }
 
 /* SKILLS */
@@ -173,10 +185,6 @@ footer a {
   margin: 0 8px;
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
 /* ANIMATIONS */
 @keyframes fadeIn {
   from { opacity: 0 }
@@ -192,14 +200,17 @@ footer a:hover {
 
 <body>
 
+<!-- CUSTOM POINTER -->
+<div id="cursor"></div>
+
 <!-- HERO -->
 <section class="hero">
   <h1>Hi, I’m <span>Sweety Rai</span></h1>
   <p>Full Stack Developer | Blockchain | Gaming</p>
 
   <div class="social-links">
-    <a href="https://github.com/SweetyRai" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a href="https://www.linkedin.com/in/sweety-rai-083a3b180/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://github.com/SweetyRai" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/sweety-rai-083a3b180/" target="_blank">LinkedIn</a>
   </div>
 </section>
 
@@ -208,61 +219,16 @@ footer a:hover {
   <h2>About Me</h2>
   <p>
     Full Stack Developer with 6+ years of experience and strong exposure to
-    blockchain, gaming, and real-time systems. Specialized in MERN stack,
-    Web3 integrations, backend-heavy architectures, and HTML game development.
-    <strong>I also teach web development and build HTML games, helping learners
-    understand core concepts through hands-on, interactive projects.</strong>
+    blockchain, gaming, and real-time systems.
+    <strong>I also teach web development and build HTML games.</strong>
   </p>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="section reveal">
-  <h2>Experience</h2>
-
-  <div class="card">
-    <h3>ZNOTEC GmbH – Berlin</h3>
-    <span>01/2025 – Present | Full Stack Web Developer</span>
-    <p>Developed and maintained ZNOTEC GmbH's official website using the MERN stack.</p>
-  </div>
-
-  <div class="card">
-    <h3>COINCADE STUDIOS – Mumbai</h3>
-    <span>10/2021 – 03/2024 | Full Stack Developer</span>
-    <p>Worked on blockchain projects including Coincide, 3TDao, Bosscultr, and Shaurrya Teleservices.</p>
-  </div>
-
-  <div class="card">
-    <h3>PAPER BOAT APPS – Mumbai</h3>
-    <span>05/2021 – 08/2021 | Full Stack Developer</span>
-    <p>Worked on Kiddopia backend and Admin Panel using Node.js, Firebase, and MySQL.</p>
-  </div>
-
-  <div class="card">
-    <h3>AIGEN TECH – Mumbai</h3>
-    <span>10/2019 – 12/2020 | Full Stack Developer</span>
-    <p>Built microservices and developed SHERO platform.</p>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section class="section reveal">
-  <h2>Education</h2>
-  <p>
-    Blockchain Certification – Berlin BSBI
-    <a href="https://certificate.berlinsbi.com/verify/6b6a8ddb669" target="_blank">
-      (View Certificate)
-    </a>
-  </p>
-  <p>MSc (IT) – Mumbai University (2019)</p>
-  <p>BSc (IT) – Mumbai University (2017)</p>
-  
 </section>
 
 <!-- GAME -->
 <section class="section reveal">
   <h2>Mini HTML Car Racing Game</h2>
   <div class="game-box">
-    <p>Use ← → Arrow Keys to move the car. Avoid obstacles!</p>
+    <p>Use ← → Arrow Keys to move the car.</p>
     <canvas id="gameCanvas" width="320" height="480"></canvas>
     <p>Score: <span id="score">0</span></p>
     <button onclick="startGame()">Start</button>
@@ -277,6 +243,7 @@ footer a:hover {
 </footer>
 
 <script>
+/* SCROLL REVEAL */
 const reveals = document.querySelectorAll(".reveal");
 window.addEventListener("scroll", () => {
   reveals.forEach(el => {
@@ -286,7 +253,27 @@ window.addEventListener("scroll", () => {
   });
 });
 
-/* GAME LOGIC */
+/* ===== SMOOTH POINTER LOGIC (CodePen-inspired) ===== */
+const cursor = document.getElementById("cursor");
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+
+document.addEventListener("mousemove", e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateCursor() {
+  cursorX += (mouseX - cursorX) * 0.15;
+  cursorY += (mouseY - cursorY) * 0.15;
+  cursor.style.left = cursorX + "px";
+  cursor.style.top = cursorY + "px";
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+/* GAME LOGIC (UNCHANGED) */
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
